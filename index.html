@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주식회사 강화이앤씨 - Smart Safety Partner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; }
+        .bg-gradient-hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .text-primary { color: #2563eb; }
+        .bg-primary { background-color: #2563eb; }
+        #mobile-menu { display: none; }
+        .is-active #mobile-menu { display: block; }
+        @media print {
+            .no-print { display: none; }
+            .break-before { page-break-before: always; }
+            body { -webkit-print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-slate-800">
+
+    <nav class="bg-white/90 backdrop-blur-md sticky top-0 w-full z-50 border-b border-gray-100 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="location.href='#'">
+                    <span class="text-xl md:text-2xl font-black text-slate-800 tracking-tighter hover:text-blue-600 transition">
+                        주식회사 <span class="text-blue-600">강화이앤씨</span>
+                    </span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-gray-600 hover:text-blue-600 font-medium transition">회사소개</a>
+                    <a href="#competency" class="text-gray-600 hover:text-blue-600 font-medium transition">핵심경쟁력</a>
+                    <a href="#business" class="text-gray-600 hover:text-blue-600 font-medium transition">사업분야</a>
+                    <a href="#trackrecord" class="text-gray-600 hover:text-blue-600 font-medium transition">실적</a>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <a href="#contact" class="hidden sm:block bg-blue-600 text-white px-4 py-2 rounded-full font-bold hover:bg-blue-700 transition shadow-lg text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-paper-plane text-xs"></i> 문의하기
+                    </a>
+                    <button id="mobile-menu-toggle" class="md:hidden p-2 text-gray-600 hover:text-blue-600 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-100">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50">회사소개</a>
+                <a href="#competency" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50">핵심경쟁력</a>
+                <a href="#business" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50">사업분야</a>
+                <a href="#trackrecord" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50">실적</a>
+                <a href="#contact" class="block w-full text-center bg-blue-600 text-white px-3 py-2 mt-2 rounded-md font-bold hover:bg-blue-700">문의하기</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-gradient-hero text-white pt-24 pb-16 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#4b5563 1px, transparent 1px); background-size: 30px 30px;"></div>
+        
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-3/5 space-y-4 text-center md:text-left">
+                    <div class="flex flex-wrap justify-center md:justify-start gap-2 mb-4">
+                        <span class="bg-pink-500/20 text-pink-300 border border-pink-500/30 px-3 py-1 rounded-full text-xs font-bold tracking-wide">여성기업 인증</span>
+                        <span class="bg-blue-500/20 text-blue-300 border border-blue-500/30 px-3 py-1 rounded-full text-xs font-bold tracking-wide">에스원 우수협력사</span>
+                        <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-full text-xs font-bold tracking-wide">특허 보유</span>
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl font-black leading-tight">
+                        공간의 안전을 <span class="text-blue-500">강화</span>하다,<br>
+                        기술의 신뢰를 <span class="text-gray-400">잇다.</span>
+                    </h1>
+                    <p class="text-md sm:text-lg text-gray-300 font-light max-w-lg mx-auto md:mx-0">
+                        Smart Safety Partner, <strong>강화 E&C</strong><br>
+                        깐깐한 시공과 혁신적인 유지보수 기술로<br>귀사의 안전한 내일을 설계합니다.
+                    </p>
+                    <div class="pt-4 flex justify-center md:justify-start gap-4">
+                        <div class="text-center px-4 py-2 border border-gray-700 rounded-lg bg-slate-800/50 backdrop-blur-sm">
+                            <p class="text-xs text-gray-400">설립일</p>
+                            <p class="font-bold text-white">2019.04</p>
+                        </div>
+                        <div class="text-center px-4 py-2 border border-gray-700 rounded-lg bg-slate-800/50 backdrop-blur-sm">
+                            <p class="text-xs text-gray-400">시공능력</p>
+                            <p class="font-bold text-white">40억+</p>
+                        </div>
+                         <div class="text-center px-4 py-2 border border-gray-700 rounded-lg bg-slate-800/50 backdrop-blur-sm">
+                            <p class="text-xs text-gray-400">신용등급</p>
+                            <p class="font-bold text-white">B등급</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-2/5 mt-10 md:mt-0 relative">
+                     <div class="relative bg-gradient-to-tr from-blue-600 to-cyan-400 rounded-full p-1 shadow-2xl transform hover:scale-105 transition duration-500 w-52 h-52 mx-auto flex items-center justify-center">
+                        <div class="bg-white rounded-full p-2 h-full w-full flex flex-col justify-center items-center text-center overflow-hidden">
+                            <div class="text-blue-600 mb-1">
+                                <i class="fa-solid fa-shield-halved text-4xl"></i>
+                            </div>
+                            <h3 class="font-black text-xl text-slate-800 leading-none">
+                                주식회사<br><span class="text-blue-600 text-2xl">강화이앤씨</span>
+                            </h3>
+                            <p class="text-xs text-gray-400 mt-2 tracking-widest uppercase font-bold">Smart Safety</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h4 class="text-blue-600 font-bold text-sm tracking-widest mb-2 uppercase">CEO Message</h4>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6">기본을 지키는 깐깐함,<br>현장을 책임지는 리더십</h2>
+                    <div class="space-y-4 text-gray-600 text-sm leading-relaxed">
+                        <p>
+                            안녕하십니까, <strong>주식회사 강화이앤씨 대표 김귀정</strong>입니다.<br>
+                            2019년 설립 이래, 저희는 "안전이 곧 기술이다"라는 신념으로 달려왔습니다.
+                        </p>
+                        <p>
+                            국내 1위 보안 기업 <strong>(주)에스원의 정규 협력사</strong>로서 입증받은 시공 능력과
+                            여성 기업 특유의 섬세한 현장 관리로 고객의 자산을 안전하게 보호합니다.
+                        </p>
+                        <p>
+                            최근 <strong>'돔형 카메라 세정 장치' 특허 등록</strong>을 통해 유지보수의 질을 한 단계 높였습니다.
+                            단순 시공을 넘어, 고객의 마음까지 안심시키는 파트너가 되겠습니다.
+                        </p>
+                    </div>
+                    <div class="mt-8 flex items-center gap-4">
+                        <div class="h-px bg-gray-300 w-16"></div>
+                        <span class="font-serif italic text-md font-bold text-slate-800">CEO 김 귀 정</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 mt-8 md:mt-0">
+                    <div class="bg-gray-50 p-4 rounded-xl text-center hover:bg-blue-50 transition border border-gray-100 group">
+                        <i class="fa-solid fa-users text-blue-600 text-2xl mb-2"></i>
+                        <h3 class="text-2xl font-black text-slate-900">18<span class="text-md font-normal text-gray-500">명</span></h3>
+                        <p class="text-xs text-gray-600 font-medium">전문 기술 인력</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-xl text-center hover:bg-blue-50 transition border border-gray-100 group">
+                        <i class="fa-solid fa-building text-blue-600 text-2xl mb-2"></i>
+                        <h3 class="text-2xl font-black text-slate-900">40<span class="text-md font-normal text-gray-500">억+</span></h3>
+                        <p class="text-xs text-gray-600 font-medium">시공능력평가액</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-xl text-center hover:bg-blue-50 transition border border-gray-100 group">
+                        <i class="fa-solid fa-certificate text-blue-600 text-2xl mb-2"></i>
+                        <h3 class="text-2xl font-black text-slate-900">2<span class="text-md font-normal text-gray-500">회</span></h3>
+                        <p class="text-xs text-gray-600 font-medium">안전보건 모범상</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-xl text-center hover:bg-blue-50 transition border border-gray-100 group">
+                        <i class="fa-solid fa-chart-line text-blue-600 text-2xl mb-2"></i>
+                        <h3 class="text-2xl font-black text-slate-900">B<span class="text-md font-normal text-gray-500">등급</span></h3>
+                        <p class="text-xs text-gray-600 font-medium">기업신용평가</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="competency" class="py-16 bg-slate-900 text-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl font-bold mb-3">Why Ganghwa E&C?</h2>
+                <p class="text-gray-400 text-sm">강화이앤씨가 제공하는 차별화된 핵심 경쟁력입니다.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-blue-500 transition duration-300 group">
+                    <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-handshake text-xl text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Proven Partnership</h3>
+                    <p class="text-gray-400 text-xs mb-3 border-b border-slate-700 pb-3">검증된 파트너십</p>
+                    <ul class="space-y-2 text-gray-300 text-xs">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-blue-400 mt-1"></i> (주)에스원 정규 협력사
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-blue-400 mt-1"></i> 안전보건 우수협력사 '모범상' 2회 수상 (2022, 2025)
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-blue-400 mt-1"></i> 대기업이 인정한 안전 관리
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-blue-500 transition duration-300 group">
+                    <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-microchip text-xl text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Technical Innovation</h3>
+                    <p class="text-gray-400 text-xs mb-3 border-b border-slate-700 pb-3">기술 혁신 역량</p>
+                    <ul class="space-y-2 text-gray-300 text-xs">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-blue-400 mt-1"></i> <strong>자체 특허 보유</strong> (돔형 카메라 세정 장치)
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-blue-400 mt-1"></i> 소프트웨어 사업자 등록
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-blue-400 mt-1"></i> 시스템 통합(SI) 기술력 확보
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-blue-500 transition duration-300 group">
+                    <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-helmet-safety text-xl text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Expert Manpower</h3>
+                    <p class="text-gray-400 text-xs mb-3 border-b border-slate-700 pb-3">전문 기술 인력</p>
+                    <ul class="space-y-2 text-gray-300 text-xs">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-blue-400 mt-1"></i> 전체 직원 100% 기술자 구성
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-blue-400 mt-1"></i> 특급 1명, 고급 2명 등 고숙련 엔지니어 보유
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-blue-400 mt-1"></i> 시공능력평가액 40억 원 달성
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="business" class="py-16 bg-gray-50 break-before">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center mb-4 text-slate-900">Business Areas</h2>
+            <p class="text-center text-gray-500 text-sm mb-10">강화이앤씨는 충북, 강원, 경기 지역을 중심으로 최적의 솔루션을 제공합니다.</p>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white p-5 rounded-xl shadow-sm hover:shadow-lg transition border-t-4 border-blue-600">
+                    <div class="bg-blue-50 w-10 h-10 rounded-full flex items-center justify-center mb-3 text-blue-600">
+                        <i class="fa-solid fa-video text-lg"></i>
+                    </div>
+                    <h4 class="font-bold text-md mb-1">Security System</h4>
+                    <p class="text-gray-500 text-xs">CCTV 설치 및 이설<br>통합 관제 시스템 구축</p>
+                </div>
+                
+                <div class="bg-white p-5 rounded-xl shadow-sm hover:shadow-lg transition border-t-4 border-blue-600">
+                    <div class="bg-blue-50 w-10 h-10 rounded-full flex items-center justify-center mb-3 text-blue-600">
+                        <i class="fa-solid fa-id-card text-lg"></i>
+                    </div>
+                    <h4 class="font-bold text-md mb-1">Access Control</h4>
+                    <p class="text-gray-500 text-xs">출입통제 시스템<br>생체인식 보안</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-xl shadow-sm hover:shadow-lg transition border-t-4 border-blue-600">
+                    <div class="bg-blue-50 w-10 h-10 rounded-full flex items-center justify-center mb-3 text-blue-600">
+                        <i class="fa-solid fa-screwdriver-wrench text-lg"></i>
+                    </div>
+                    <h4 class="font-bold text-md mb-1">Maintenance</h4>
+                    <p class="text-gray-500 text-xs">보안 기기 유지보수<br>특허 기술 클리닝</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-xl shadow-sm hover:shadow-lg transition border-t-4 border-blue-600">
+                    <div class="bg-blue-50 w-10 h-10 rounded-full flex items-center justify-center mb-3 text-blue-600">
+                        <i class="fa-solid fa-network-wired text-lg"></i>
+                    </div>
+                    <h4 class="font-bold text-md mb-1">Network Works</h4>
+                    <p class="text-gray-500 text-xs">일반 통신 공사<br>구내 통신망 구축</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="trackrecord" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="order-2 md:order-1">
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-arrow-trend-up text-blue-600"></i>
+                        성장 그래프 (에스원 실적)
+                    </h3>
+                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-100">
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between text-xs font-bold text-gray-500 mb-1">
+                                    <span>2022</span>
+                                    <span>8.8억</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-3">
+                                    <div class="bg-blue-300 h-3 rounded-full" style="width: 56%"></div>
+                                </div>
+                            </div>
+                             <div>
+                                <div class="flex justify-between text-xs font-bold text-gray-500 mb-1">
+                                    <span>2023</span>
+                                    <span>11.7억</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-3">
+                                    <div class="bg-blue-400 h-3 rounded-full" style="width: 75%"></div>
+                                </div>
+                            </div>
+                             <div>
+                                <div class="flex justify-between text-xs font-bold text-gray-500 mb-1">
+                                    <span>2024</span>
+                                    <span>14.8억</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-3">
+                                    <div class="bg-blue-500 h-3 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                             <div>
+                                <div class="flex justify-between text-xs font-bold text-blue-600 mb-1">
+                                    <span>2025</span>
+                                    <span>15.5억 (달성)</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-3">
+                                    <div class="bg-blue-600 h-3 rounded-full" style="width: 100%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-xs text-center text-gray-500 font-medium">매년 20% 이상 꾸준한 성장</p>
+                    </div>
+                </div>
+
+                <div class="order-1 md:order-2">
+                    <h3 class="text-xl font-bold mb-6">주요 연혁 및 실적</h3>
+                    <div class="relative border-l-2 border-gray-200 ml-3 space-y-6">
+                        <div class="ml-6 relative">
+                            <span class="absolute -left-[31px] top-1 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-sm"></span>
+                            <h4 class="font-bold text-slate-900 text-md">2025. 도약의 해</h4>
+                            <p class="text-xs text-gray-600 mt-1">특허 등록 (돔형 카메라 세정장치)</p>
+                            <p class="text-xs text-gray-600">S/W 사업자 등록, 에스원 안전보건 모범상 수상</p>
+                            <p class="text-xs text-blue-600 font-medium">에스원 공사 실적 15.5억 달성</p>
+                        </div>
+                        <div class="ml-6 relative">
+                            <span class="absolute -left-[31px] top-1 w-4 h-4 bg-gray-300 rounded-full border-4 border-white"></span>
+                            <h4 class="font-bold text-slate-900 text-md">2022 ~ 2024. 성장기</h4>
+                            <p class="text-xs text-gray-600 mt-1">에스원 안전보건 우수협력사 선정 (2022)</p>
+                            <p class="text-xs text-gray-600">일반통신 수주 확대 (연 6억 이상)</p>
+                        </div>
+                        <div class="ml-6 relative">
+                            <span class="absolute -left-[31px] top-1 w-4 h-4 bg-gray-300 rounded-full border-4 border-white"></span>
+                            <h4 class="font-bold text-slate-900 text-md">2019 ~ 2020. 설립 및 기반 구축</h4>
+                            <p class="text-xs text-gray-600 mt-1">법인 설립, 여성기업 인증, 정보통신공사업 면허 취득</p>
+                            <p class="text-xs text-gray-600">(주)에스원 정규 협력업체 등록</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center mb-8">Certifications</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200 flex flex-col items-center text-center">
+                    <div class="w-14 h-16 bg-gray-100 mb-2 flex items-center justify-center text-gray-400 rounded">
+                        <i class="fa-solid fa-file-contract text-xl"></i>
+                    </div>
+                    <p class="font-bold text-sm">정보통신공사업</p>
+                    <p class="text-xs text-gray-500">등록증</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-blue-200 flex flex-col items-center text-center ring-2 ring-blue-100">
+                    <div class="w-14 h-16 bg-blue-50 mb-2 flex items-center justify-center text-blue-500 rounded">
+                        <i class="fa-solid fa-award text-xl"></i>
+                    </div>
+                    <p class="font-bold text-sm text-blue-700">특허증</p>
+                    <p class="text-xs text-blue-500">돔형카메라세정장치</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200 flex flex-col items-center text-center">
+                    <div class="w-14 h-16 bg-gray-100 mb-2 flex items-center justify-center text-gray-400 rounded">
+                        <i class="fa-solid fa-user-check text-xl"></i>
+                    </div>
+                    <p class="font-bold text-sm">여성기업</p>
+                    <p class="text-xs text-gray-500">확인서</p>
+                </div>
+                 <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200 flex flex-col items-center text-center">
+                    <div class="w-14 h-16 bg-gray-100 mb-2 flex items-center justify-center text-gray-400 rounded">
+                        <i class="fa-solid fa-thumbs-up text-xl"></i>
+                    </div>
+                    <p class="font-bold text-sm">안전보건모범상</p>
+                    <p class="text-xs text-gray-500">에스원 (2회)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-slate-900 text-white py-16 break-before">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div class="order-2 md:order-1">
+                    <h2 class="text-2xl font-bold mb-2">Contact Us</h2>
+                    <p class="text-gray-400 text-sm mb-6">귀사의 안전한 내일을 강화이앤씨가 설계합니다.</p>
+                    
+                    <div class="space-y-5">
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 mt-1 bg-slate-800 rounded-full flex items-center justify-center text-blue-500 flex-shrink-0">
+                                <i class="fa-solid fa-location-dot text-sm"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400 mb-1">Address</p>
+                                <p class="font-medium text-sm">강원특별자치도 원주시 섭재삼보길 1-56, 101호 (반곡동)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 mt-1 bg-slate-800 rounded-full flex items-center justify-center text-blue-500 flex-shrink-0">
+                                <i class="fa-solid fa-phone text-sm"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400 mb-1">Tel & Direct</p>
+                                <p class="font-medium text-sm">033-764-8844 / 010-8577-6093</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 mt-1 bg-slate-800 rounded-full flex items-center justify-center text-blue-500 flex-shrink-0">
+                                <i class="fa-solid fa-envelope text-sm"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400 mb-1">E-mail</p>
+                                <p class="font-medium text-sm">kh01484@hanmail.net</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-1 md:order-2 bg-slate-800 rounded-xl h-48 sm:h-64 flex flex-col items-center justify-center text-center p-6 border border-slate-700 relative overflow-hidden">
+                    <i class="fa-solid fa-map text-slate-700 text-8xl sm:text-9xl absolute -bottom-4 -right-4 opacity-20"></i>
+                    
+                    <h4 class="text-white font-bold text-lg mb-6 z-10">회사 위치 확인하기</h4>
+                    
+                    <a href="https://naver.me/5asbb0Q9" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-8 rounded-full transition-all shadow-lg flex items-center gap-2 z-10 text-sm">
+                        <i class="fa-solid fa-location-arrow"></i>
+                        길찾기 (네이버 지도)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 mt-12 pt-6 flex flex-col text-center justify-between items-center text-xs text-gray-500 space-y-2">
+                <p>&copy; 2025 Ganghwa E&C. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <span>사업자번호: 770-81-01484</span>
+                    <span>대표: 김귀정</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle Script
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            document.body.classList.toggle('is-active');
+            const icon = this.querySelector('i');
+            if (document.body.classList.contains('is-active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark'); // Change to close icon
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.body.classList.remove('is-active');
+                document.getElementById('mobile-menu-toggle').querySelector('i').classList.replace('fa-xmark', 'fa-bars');
+            });
+        });
+    </script>
+
+</body>
+</html>
