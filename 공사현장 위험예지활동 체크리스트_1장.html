@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일일 TBM 및 작업안전 점검표</title>
+    <!-- 폰트 로드 (Noto Sans KR) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* A4 출력 설정 (상단 여백 확보) */
+        @page {
+            size: A4;
+            /* 상단 25mm(파일철용), 좌우 10mm, 하단 5mm */
+            margin: 25mm 10mm 5mm 10mm;
+        }
+        @media print {
+            body { 
+                -webkit-print-color-adjust: exact; 
+                print-color-adjust: exact; 
+            }
+            .no-print { display: none !important; }
+        }
+
+        /* 기본 스타일 */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 9pt;
+            line-height: 1.25; /* 줄간격 소폭 확대 */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        /* 헤더 영역 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #1a4e8a;
+            padding-bottom: 2px; /* 간격 최소화 */
+            margin-bottom: 4px;  /* 간격 최소화 */
+        }
+
+        h1 {
+            font-size: 17pt;
+            font-weight: 700;
+            margin: 0;
+            text-align: center;
+            flex-grow: 1;
+            letter-spacing: -1px;
+            color: #1a4e8a;
+        }
+
+        .logo {
+            width: 90px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* 테이블 공통 스타일 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        th, td {
+            border: 1px solid #444;
+            padding: 2px 4px;
+            font-size: 9pt;
+            vertical-align: middle;
+        }
+
+        /* 정보 입력 테이블 */
+        .info-table {
+            margin-bottom: 4px; /* 간격 최소화 */
+        }
+
+        .info-table th {
+            background-color: #f4f7fa;
+            color: #1a4e8a;
+            text-align: center;
+            width: 10%;
+            font-weight: 600;
+            padding: 3px;
+        }
+        
+        .info-table td {
+            width: 23%;
+            height: 24px;
+        }
+
+        /* 메인 점검표 테이블 */
+        .check-table {
+            table-layout: fixed;
+            border-top: 2px solid #1a4e8a;
+        }
+
+        .check-table th {
+            background-color: #1a4e8a;
+            color: #ffffff;
+            text-align: center;
+            font-weight: 500;
+            height: 24px;
+            border-color: #1a4e8a;
+            padding: 2px;
+        }
+
+        /* 컬럼 너비 설정 */
+        .col-category { width: 11%; }
+        .col-item { width: 62%; }
+        .col-result { width: 18%; }
+        .col-note { width: 9%; }
+
+        /* 셀 스타일 */
+        .center { text-align: center; }
+        
+        .category-cell {
+            font-weight: 700;
+            font-size: 9.5pt;
+            background-color: #e8f0fe;
+            color: #1a4e8a;
+            text-align: center;
+            border-right: 2px double #b0c4de;
+        }
+        
+        .item-text {
+            word-break: keep-all;
+            padding: 4.5px 6px; /* 줄 간격(패딩) 확대: 3px -> 4.5px */
+            font-size: 9pt;
+        }
+
+        /* 부연 설명 스타일 */
+        .sub-text {
+            display: block;
+            font-size: 8pt;
+            color: #d32f2f;
+            margin-top: 2px;
+            padding-left: 10px;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+        .sub-text::before {
+            content: "※ ";
+            margin-left: -10px;
+            color: #d32f2f;
+        }
+
+        /* 점검결과 텍스트 영역 */
+        .check-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 8pt;
+            gap: 2px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        /* 강조 텍스트 */
+        .danger {
+            color: #d32f2f;
+            font-weight: 700;
+        }
+
+        /* 하단 서명란 */
+        .footer {
+            margin-top: 4px; /* 간격 최소화 */
+            text-align: right;
+            font-size: 8pt;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* 인쇄 버튼 */
+        .btn-print {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #1a4e8a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        .btn-print:hover {
+            background-color: #0f3057;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- 인쇄 버튼 (출력시 숨김) -->
+    <button class="btn-print no-print" onclick="window.print()">🖨 인쇄하기</button>
+
+    <div class="container">
+        <!-- 헤더 -->
+        <header>
+            <div></div>
+            <h1>일일 TBM 및 작업안전 점검표</h1>
+            <!-- 로고 이미지 -->
+            <img src="강화이앤씨 로고-상호 배경제거.png" alt="회사로고" class="logo">
+        </header>
+
+        <!-- 기본 정보 -->
+        <table class="info-table">
+            <tr>
+                <th>사업팀</th>
+                <td></td>
+                <th>사업장</th>
+                <!-- 사업장 칸을 colspan=3으로 확장하여 나머지 공간 차지 -->
+                <td colspan="3"></td>
+            </tr>
+            <tr>
+                <th>협력사팀명</th>
+                <td></td>
+                <th>점검일</th>
+                <td></td>
+                <!-- 점검자 위치 이동: 2열 우측 -->
+                <th>점검자</th>
+                <td style="text-align: right; vertical-align: bottom; padding-right: 15px; color: #888; font-size: 9pt;">(서명)</td>
+            </tr>
+        </table>
+
+        <!-- 점검표 본문 -->
+        <table class="check-table">
+            <thead>
+                <tr>
+                    <th class="col-category">구분</th>
+                    <th class="col-item">점검사항</th>
+                    <th class="col-result">평가</th>
+                    <th class="col-note">비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 위험예지/SP -->
+                <tr>
+                    <td rowspan="4" class="category-cell">위험예지<br>/ SP</td>
+                    <td class="item-text">1. S1 모바일 일일서약서 작성 및 위험예지활동 실시 여부</td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="item-text">2. 도면 약도층 배선 설치 높이 표기가 현장과 일치 여부
+                        <span class="sub-text">공사의뢰자 SP 내용과 현장 일치 확인</span>
+                    </td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="item-text">3. 기기/감지기의 설치 위치와 높이가 현장과 일치 여부</td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="item-text">4. 도면 내 위험환경(개구부 등) 표기와 현장 일치 여부
+                        <span class="sub-text">작업 시 위험 발생 가능한 장소 확인</span>
+                    </td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+
+                <!-- 작업자 안전 -->
+                <tr>
+                    <td rowspan="4" class="category-cell">작업자<br>안전</td>
+                    <td class="item-text">1. 작업자 음주 여부 및 건강 상태(혈압, 피로도) 확인
+                        <span class="sub-text">건강 이상 시 작업 불가 조치</span>
+                    </td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="item-text">2. 안전모(턱끈 체결), 안전화(미끄럼방지), 각반 착용 상태</td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="item-text">3. 안전벨트(그네식) 착용 상태 및 죔줄/훅 파손 여부 확인</td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="item-text">4. 작업복 단정 상태 및 공구 안전 사용 (전동공구 피복 등)
+                        <span class="sub-text">회전체 작업 시 말림 위험(장갑 등) 확인</span>
+                    </td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+
+                <!-- 사다리 작업 -->
+                <tr>
+                    <td rowspan="5" class="category-cell">사다리<br>작업</td>
+                    <td class="item-text">1. 사다리 외관(파손), 미끄럼 방지(논슬립) 부착 상태 양호 여부</td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="item-text">2. 사다리 자율 안전 인증(KC마크) 확인
+                        <span class="sub-text">비표준 및 일자 변형 가능한 AH형 경량 사다리 사용 금지</span>
+                    </td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="item-text">3. 2인 1조 작업(1인 지지) 및 최상단 작업 금지 준수</td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="item-text">4. A자형 사다리 벌어짐 방지 및 넘어짐 방지대 부착 확인</td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="item-text">5. 용도 외 사용 금지 준수 (협소한 장소의 경작업에만 사용)
+                        <span class="sub-text">일자형 사용 금지 / 고소작업대 설치 불가 장소 한정</span>
+                    </td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+
+                <!-- 일반 및 환경 -->
+                <tr>
+                    <td rowspan="4" class="category-cell">일반공사<br>& 환경</td>
+                    <td class="item-text">1. 그라인더 등 화기 작업 시 방호 조치 및 소화기구 비치</td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="item-text">2. 작업장소 구획 설정 (안전표지판, 안전테이프, 라바콘 등)
+                        <span class="sub-text">보행자 통로, 도로, 문 뒤 작업 시 충돌 방지</span>
+                    </td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="item-text">3. 전도(넘어짐) 및 미끄러짐 위험요소 제거 (바닥 정리정돈)
+                        <span class="sub-text">사다리 주변 2~3m 정리, 이동 통로 확보</span>
+                    </td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="item-text">4. 추락 및 낙하물 위험 장소 방호조치 및 날카로운 시설물 제거</td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+
+                <!-- 고소 공사 (기준) -->
+                <tr>
+                    <td rowspan="2" class="category-cell">고소공사<br>기준</td>
+                    <td class="item-text">1. 설치높이 3.5m ~ 5m 이하: 안전작업 지침 준수
+                        <span class="sub-text">A형 사다리 2인1조, 전도방지대, 안전대 사용 필수</span>
+                    </td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="item-text">2. 5m 초과 작업: <span class="danger">고소장비 사용 필수</span>
+                        <span class="sub-text">사다리(안전발판 포함) 사용 절대 금지</span>
+                    </td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+
+                <!-- 고소작업장비 (통합) -->
+                <tr>
+                    <td rowspan="4" class="category-cell">고소장비<br>(공통)</td>
+                    <td class="item-text">1. 작업계획서 작성/보관 및 유도자 배치(5m 거리 유지)</td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="item-text">2. 탑승자 안전모 및 안전대 착용, 적정 하중 준수</td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="item-text">3. 작업구간 관계자 외 출입 금지 조치 (신호수 배치)</td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="item-text">4. 장비별 필수 안전장치 정상 작동 여부 확인
+                        <span class="sub-text">아웃트리거(고소차), 과상승방지/비상하강(리프트) 등</span>
+                    </td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+                 <!-- 고소작업차 -->
+                 <tr>
+                    <td rowspan="2" class="category-cell">차량탑재형<br>(고소차)</td>
+                    <td class="item-text">1. 조종사 자격(기중기 등) 및 안전인증/검사 여부 확인</td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="item-text">2. 아웃트리거 수평 설치 및 붐 각도/작업반경 준수</td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+                <!-- 시저형 리프트 -->
+                 <tr>
+                    <td rowspan="2" class="category-cell">시저형<br>(리프트)</td>
+                    <td class="item-text">1. 과상승방지봉, 비상하강장치, 자동안전장치(주행방지) 작동 확인</td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="item-text">2. 바닥 수평 유지 및 상승 상태 이동 금지</td>
+                    <td class="center"><div class="check-group">양호 · 불량 · 해당없음</div></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="footer">
+            ※ 본 점검표는 작업 전 반드시 작성하며, 부적합 사항 발생 시 즉시 작업을 중지하고 조치 후 작업을 재개합니다.
+        </div>
+    </div>
+
+</body>
+</html>
