@@ -12,7 +12,7 @@
     <style>
         body { font-family: 'Noto Sans KR', sans-serif; }
         html { scroll-behavior: smooth; }
-        .bg-gradient-hero { background: #0f172a; position: relative; } /* 배경색을 고정하여 이미지 가시성 확보 */
+        .bg-gradient-hero { background: #0f172a; position: relative; }
         .text-primary { color: #2563eb; }
         .bg-primary { background-color: #2563eb; }
         #mobile-menu { display: none; }
@@ -56,7 +56,7 @@
             animation: pulse-blue 2s infinite;
         }
 
-        /* 배경 이미지 로테이션 스타일 (밝기 조정 버전) */
+        /* 배경 이미지 로테이션 스타일 */
         .hero-bg-container {
             position: absolute;
             inset: 0;
@@ -72,13 +72,12 @@
             transition: opacity 1.5s ease-in-out;
         }
         .hero-bg-img.active {
-            opacity: 0.8; /* 기존 0.35에서 0.6으로 상향 (더 밝아짐) */
+            opacity: 0.6;
         }
         .hero-overlay {
             position: absolute;
             inset: 0;
-            /* 검은색 오버레이 농도를 0.4로 낮춰 배경을 더 밝게 표시 */
-            background: rgba(0, 0, 0, 0.4); 
+            background: rgba(0, 0, 0, 0.45); 
             z-index: 1;
         }
 
@@ -131,7 +130,7 @@
         </div>
     </nav>
 
-    <header class="bg-gradient-hero text-white pt-60 pb-48 relative overflow-hidden">
+    <header class="bg-gradient-hero text-white pt-32 pb-24 md:pt-52 md:pb-44 relative overflow-hidden min-h-[550px] md:min-h-[700px] flex items-center">
         <div class="hero-bg-container">
             <img src="배경1.jpg" class="hero-bg-img active" alt="배경1">
             <img src="배경2.jpg" class="hero-bg-img" alt="배경2">
@@ -141,41 +140,41 @@
 
         <div class="absolute inset-0 opacity-10 z-[2]" style="background-image: radial-gradient(#4b5563 1px, transparent 1px); background-size: 30px 30px;"></div>
         
-        <div class="max-w-6xl mx-auto px-4 relative z-[10]">
-            <div class="flex flex-col md:flex-row items-center justify-between">
-                <div class="md:w-3/5 space-y-4 text-center md:text-left reveal active">
-                    <div class="flex flex-wrap justify-center md:justify-start gap-2 mb-4">
-                        <span class="bg-pink-500/20 text-pink-300 border border-pink-500/30 px-3 py-1 rounded-full text-xs font-bold tracking-wide transition duration-300 hover:scale-105">여성기업 인증</span>
-                        <span class="bg-blue-500/20 text-blue-300 border border-blue-500/30 px-3 py-1 rounded-full text-xs font-bold tracking-wide transition duration-300 hover:scale-105">국내 1위 보안 기업 우수협력사</span>
-                        <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-full text-xs font-bold tracking-wide transition duration-300 hover:scale-105">특허 보유</span>
+        <div class="max-w-6xl mx-auto px-4 relative z-[10] w-full">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+                <div class="md:w-3/5 space-y-5 text-center md:text-left reveal active">
+                    <div class="flex flex-wrap justify-center md:justify-start gap-2 mb-2">
+                        <span class="bg-pink-500/20 text-pink-300 border border-pink-500/30 px-3 py-1 rounded-full text-[10px] md:text-xs font-bold tracking-wide transition duration-300 hover:scale-105">여성기업 인증</span>
+                        <span class="bg-blue-500/20 text-blue-300 border border-blue-500/30 px-3 py-1 rounded-full text-[10px] md:text-xs font-bold tracking-wide transition duration-300 hover:scale-105">국내 1위 보안 기업 우수협력사</span>
+                        <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-full text-[10px] md:text-xs font-bold tracking-wide transition duration-300 hover:scale-105">특허 보유</span>
                     </div>
-                    <h1 class="text-3xl sm:text-4xl font-black leading-tight text-white">
-                        공간의 안전을 <span class="text-blue-500">강화</span>하다,<br>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-black leading-tight text-white drop-shadow-md">
+                        공간의 안전을 <span class="text-blue-500">강화</span>하다,<br class="hidden md:block">
                         기술의 신뢰를 <span class="text-blue-400">잇다.</span>
                     </h1>
-                    <p class="text-md sm:text-lg text-gray-300 font-light max-w-lg mx-auto md:mx-0">
+                    <p class="text-sm md:text-lg text-gray-200 font-light max-w-lg mx-auto md:mx-0 leading-relaxed">
                         Smart Safety Partner, <strong>강화이앤씨</strong><br>
                         깐깐한 시공과 혁신적인 유지보수 기술로<br>귀사의 <span class="text-white font-bold underline decoration-blue-500">안전한 내일</span>을 설계합니다.
                     </p>
 
-                    <div class="pt-8 flex justify-center md:justify-start gap-4">
-                        <div class="text-center px-4 py-2 border border-gray-700 rounded-lg bg-slate-800/50 backdrop-blur-sm transition duration-300 hover:scale-[1.03] hover:shadow-lg">
-                            <p class="text-xs text-gray-400">설립일</p>
-                            <p class="font-bold text-white">2019.04</p>
+                    <div class="pt-6 flex justify-center md:justify-start gap-3 md:gap-4">
+                        <div class="text-center px-3 py-2 md:px-4 md:py-2 border border-white/20 rounded-lg bg-white/10 backdrop-blur-md transition duration-300 hover:scale-[1.03]">
+                            <p class="text-[10px] text-gray-300">설립일</p>
+                            <p class="font-bold text-xs md:text-base text-white">2019.04</p>
                         </div>
-                        <div class="text-center px-4 py-2 border border-gray-700 rounded-lg bg-slate-800/50 backdrop-blur-sm transition duration-300 hover:scale-[1.03] hover:shadow-lg">
-                            <p class="text-xs text-gray-400">시공능력</p>
-                            <p class="font-bold text-blue-400">40억+</p>
+                        <div class="text-center px-3 py-2 md:px-4 md:py-2 border border-white/20 rounded-lg bg-white/10 backdrop-blur-md transition duration-300 hover:scale-[1.03]">
+                            <p class="text-[10px] text-gray-300">시공능력</p>
+                            <p class="font-bold text-xs md:text-base text-blue-400">40억+</p>
                         </div>
-                         <div class="text-center px-4 py-2 border border-gray-700 rounded-lg bg-slate-800/50 backdrop-blur-sm transition duration-300 hover:scale-[1.03] hover:shadow-lg">
-                            <p class="text-xs text-gray-400">신용등급</p>
-                            <p class="font-bold text-white">B등급</p>
+                         <div class="text-center px-3 py-2 md:px-4 md:py-2 border border-white/20 rounded-lg bg-white/10 backdrop-blur-md transition duration-300 hover:scale-[1.03]">
+                            <p class="text-[10px] text-gray-300">신용등급</p>
+                            <p class="font-bold text-xs md:text-base text-white">B등급</p>
                         </div>
                     </div>
                 </div>
-                <div class="md:w-2/5 mt-10 md:mt-0 relative reveal">
-                    <div class="relative bg-white rounded-full shadow-2xl transform hover:scale-[1.05] transition duration-500 w-52 h-52 mx-auto flex items-center justify-center p-2">
-                        <img src="강화이앤씨로고 배경제거.png" alt="강화이앤씨 심볼" class="w-full h-full object-cover rounded-full p-6" onerror="this.src='https://placehold.co/200x200?text=Logo'">
+                <div class="md:w-2/5 mt-4 md:mt-0 relative reveal">
+                    <div class="relative bg-white/90 backdrop-blur-sm rounded-full shadow-2xl transform hover:scale-[1.05] transition duration-500 w-40 h-40 md:w-52 md:h-52 mx-auto flex items-center justify-center p-2">
+                        <img src="강화이앤씨로고 배경제거.png" alt="강화이앤씨 심볼" class="w-full h-full object-cover rounded-full p-4 md:p-6" onerror="this.src='https://placehold.co/200x200?text=Logo'">
                     </div>
                 </div>
             </div>
