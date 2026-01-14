@@ -475,13 +475,13 @@
                 <div class="order-1 md:order-2">
                     <div class="bg-white rounded-xl p-6 text-slate-800 shadow-xl border-t-4 border-blue-600">
                         <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-lg font-bold">간편 상담 신청</h3>
+                            <h3 class="text-lg font-bold">기술 상담 신청</h3>
                             <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded">SMS 즉시 접수</span>
                         </div>
                         <form class="space-y-4" onsubmit="event.preventDefault(); sendInquirySMS();">
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label class="block text-xs font-bold text-gray-600 mb-1">담당자명</label>
+                                    <label class="block text-xs font-bold text-gray-600 mb-1">신청자명</label>
                                     <input type="text" id="reg_name" required class="w-full bg-gray-50 border border-gray-200 rounded p-2 text-sm focus:outline-none focus:border-blue-500 transition" placeholder="홍길동">
                                 </div>
                                 <div>
@@ -494,7 +494,7 @@
                                 <textarea id="reg_message" required rows="3" class="w-full bg-gray-50 border border-gray-200 rounded p-2 text-sm focus:outline-none focus:border-blue-500 transition" placeholder="현장 위치 및 문의 내용을 간략히 적어주세요."></textarea>
                             </div>
                             <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 rounded hover:bg-blue-700 transition shadow-md flex justify-center items-center gap-2">
-                                <i class="fa-solid fa-comment-sms"></i> 문자로 신청하기
+                                <i class="fa-solid fa-comment-sms"></i> 상담 신청
                             </button>
                             <p class="text-[10px] text-gray-400 text-center font-medium">* 클릭 시 휴대전화의 문자 메시지 앱으로 연결됩니다.</p>
                         </form>
@@ -590,3 +590,4 @@
 
 </body>
 </html>
+
