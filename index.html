@@ -12,7 +12,7 @@
     <style>
         body { font-family: 'Noto Sans KR', sans-serif; }
         html { scroll-behavior: smooth; }
-        .bg-gradient-hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .bg-gradient-hero { background: #0f172a; position: relative; } /* 배경색을 고정하여 이미지 가시성 확보 */
         .text-primary { color: #2563eb; }
         .bg-primary { background-color: #2563eb; }
         #mobile-menu { display: none; }
@@ -54,6 +54,32 @@
         }
         .btn-pulse {
             animation: pulse-blue 2s infinite;
+        }
+
+        /* 배경 이미지 로테이션 스타일 (밝기 조정 버전) */
+        .hero-bg-container {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        .hero-bg-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        .hero-bg-img.active {
+            opacity: 0.8; /* 기존 0.35에서 0.6으로 상향 (더 밝아짐) */
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            /* 검은색 오버레이 농도를 0.4로 낮춰 배경을 더 밝게 표시 */
+            background: rgba(0, 0, 0, 0.4); 
+            z-index: 1;
         }
 
         @media print {
@@ -105,10 +131,17 @@
         </div>
     </nav>
 
-    <header class="bg-gradient-hero text-white pt-24 pb-16 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#4b5563 1px, transparent 1px); background-size: 30px 30px;"></div>
+    <header class="bg-gradient-hero text-white pt-60 pb-48 relative overflow-hidden">
+        <div class="hero-bg-container">
+            <img src="배경1.jpg" class="hero-bg-img active" alt="배경1">
+            <img src="배경2.jpg" class="hero-bg-img" alt="배경2">
+            <img src="배경3.jpg" class="hero-bg-img" alt="배경3">
+            <div class="hero-overlay"></div>
+        </div>
+
+        <div class="absolute inset-0 opacity-10 z-[2]" style="background-image: radial-gradient(#4b5563 1px, transparent 1px); background-size: 30px 30px;"></div>
         
-        <div class="max-w-6xl mx-auto px-4 relative z-10">
+        <div class="max-w-6xl mx-auto px-4 relative z-[10]">
             <div class="flex flex-col md:flex-row items-center justify-between">
                 <div class="md:w-3/5 space-y-4 text-center md:text-left reveal active">
                     <div class="flex flex-wrap justify-center md:justify-start gap-2 mb-4">
@@ -257,7 +290,7 @@
                             <i class="fa-solid fa-check text-blue-400 mt-1"></i> 전체 직원 <span class="text-white font-semibold">100% 기술자 구성</span>
                         </li>
                         <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-check text-blue-400 mt-1"></i> <span class="text-blue-300 font-medium">특급/고급 엔지니어</span> 다수 보유
+                            <i class="fa-solid fa-check text-blue-300 font-medium">특급/고급 엔지니어</i> 다수 보유
                         </li>
                         <li class="flex items-start gap-2">
                             <i class="fa-solid fa-check text-blue-400 mt-1"></i> 신속하고 정확한 AS 대응망
@@ -388,42 +421,6 @@
         </div>
     </section>
 
-    <section class="py-16 bg-gray-50 reveal">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-2xl font-bold text-center mb-8">주요 인증 및 <span class="text-blue-600">특허 현황</span></h2>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200 flex flex-col items-center text-center transition duration-300 hover:scale-[1.02] hover:shadow-lg">
-                    <div class="w-14 h-16 bg-gray-100 mb-2 flex items-center justify-center text-gray-400 rounded">
-                        <i class="fa-solid fa-file-contract text-xl"></i>
-                    </div>
-                    <p class="font-bold text-sm">정보통신공사업</p>
-                    <p class="text-xs text-gray-500">등록증</p>
-                </div>
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-blue-200 flex flex-col items-center text-center ring-2 ring-blue-100 transition duration-300 hover:scale-[1.02] hover:shadow-lg">
-                    <div class="w-14 h-16 bg-blue-50 mb-2 flex items-center justify-center text-blue-500 rounded">
-                        <i class="fa-solid fa-award text-xl"></i>
-                    </div>
-                    <p class="font-bold text-sm text-blue-700">핵심 특허증</p>
-                    <p class="text-xs text-blue-500">돔형카메라세정장치</p>
-                </div>
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200 flex flex-col items-center text-center transition duration-300 hover:scale-[1.02] hover:shadow-lg">
-                    <div class="w-14 h-16 bg-gray-100 mb-2 flex items-center justify-center text-gray-400 rounded">
-                        <i class="fa-solid fa-user-check text-xl"></i>
-                    </div>
-                    <p class="font-bold text-sm text-pink-600">여성기업</p>
-                    <p class="text-xs text-gray-500">확인서</p>
-                </div>
-                 <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200 flex flex-col items-center text-center transition duration-300 hover:scale-[1.02] hover:shadow-lg">
-                    <div class="w-14 h-16 bg-gray-100 mb-2 flex items-center justify-center text-gray-400 rounded">
-                        <i class="fa-solid fa-thumbs-up text-xl"></i>
-                    </div>
-                    <p class="font-bold text-sm">우수협력사 선정</p>
-                    <p class="text-xs text-blue-600 font-bold">2회 선정 달성</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <footer id="contact" class="bg-slate-900 text-white py-16 break-before reveal">
         <div class="max-w-6xl mx-auto px-4">
             <div class="grid md:grid-cols-2 gap-10">
@@ -479,21 +476,6 @@
                             <span class="bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded"></span>
                         </div>
 
-                        <div class="bg-blue-50/50 rounded-lg p-3 mb-6 space-y-2 border border-blue-100">
-                            <div class="flex items-center gap-2 text-xs font-bold text-blue-800">
-                                <i class="fa-solid fa-circle-check text-blue-600"></i>
-                                <span>24시간 이내 담당자 직접 회신</span>
-                            </div>
-                            <div class="flex items-center gap-2 text-xs font-bold text-blue-800">
-                                <i class="fa-solid fa-circle-check text-blue-600"></i>
-                                <span>공공기관 · 대기업 시공 실적 다수 보유</span>
-                            </div>
-                            <div class="flex items-center gap-2 text-xs font-bold text-blue-800">
-                                <i class="fa-solid fa-circle-check text-blue-600"></i>
-                                <span>현장 방문 및 정밀 진단 가능</span>
-                            </div>
-                        </div>
-
                         <form class="space-y-4" onsubmit="event.preventDefault(); sendInquirySMS();">
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
@@ -512,7 +494,6 @@
                             <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 rounded hover:bg-blue-700 transition shadow-md flex justify-center items-center gap-2">
                                 <i class="fa-solid fa-comment-sms"></i> 상담 신청하기
                             </button>
-                            <p class="text-[10px] text-gray-400 text-center font-medium">* 클릭 시 휴대전화의 문자 메시지 앱으로 연결됩니다.</p>
                         </form>
                     </div>
                 </div>
@@ -582,6 +563,17 @@
         window.addEventListener("scroll", reveal);
         reveal(); // Trigger once on load
 
+        // 배경 이미지 로테이션 스크립트 (3초 간격)
+        let currentImgIndex = 0;
+        const bgImages = document.querySelectorAll('.hero-bg-img');
+        
+        function rotateHeroImages() {
+            bgImages[currentImgIndex].classList.remove('active');
+            currentImgIndex = (currentImgIndex + 1) % bgImages.length;
+            bgImages[currentImgIndex].classList.add('active');
+        }
+        setInterval(rotateHeroImages, 3000);
+
         // SMS Send Function (Revised)
         function sendInquirySMS() {
             const name = document.getElementById('reg_name').value;
@@ -606,5 +598,3 @@
 
 </body>
 </html>
-
-
