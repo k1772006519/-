@@ -13,8 +13,6 @@
         body { font-family: 'Noto Sans KR', sans-serif; word-break: keep-all; }
         html { scroll-behavior: smooth; }
         .bg-gradient-hero { background: #0f172a; position: relative; }
-        .text-primary { color: #2563eb; }
-        .bg-primary { background-color: #2563eb; }
         #mobile-menu { display: none; }
         .is-active #mobile-menu { display: block; }
         
@@ -40,24 +38,16 @@
             border-radius: 50%;
             transition: all 0.3s ease;
         }
-        #topBtn:hover {
-            transform: translateY(-5px);
-        }
+        #topBtn:hover { transform: translateY(-5px); }
 
         @keyframes pulse-blue {
             0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
             70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
             100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
         }
-        .btn-pulse {
-            animation: pulse-blue 2s infinite;
-        }
+        .btn-pulse { animation: pulse-blue 2s infinite; }
 
-        .hero-bg-container {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-        }
+        .hero-bg-container { position: absolute; inset: 0; z-index: 0; }
         .hero-bg-img {
             position: absolute;
             inset: 0;
@@ -67,9 +57,7 @@
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
         }
-        .hero-bg-img.active {
-            opacity: 0.85;
-        }
+        .hero-bg-img.active { opacity: 0.85; }
         .hero-overlay {
             position: absolute;
             inset: 0;
@@ -77,15 +65,9 @@
             z-index: 1;
         }
 
-        .hero-title {
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            letter-spacing: -0.02em;
-        }
+        .hero-title { text-shadow: 0 2px 10px rgba(0,0,0,0.3); letter-spacing: -0.02em; }
 
-        .nav-link {
-            position: relative;
-            padding: 0.5rem 0;
-        }
+        .nav-link { position: relative; padding: 0.5rem 0; cursor: pointer; }
         .nav-link::after {
             content: '';
             position: absolute;
@@ -96,9 +78,10 @@
             background-color: #2563eb;
             transition: width 0.3s ease;
         }
-        .nav-link:hover::after {
-            width: 100%;
-        }
+        .nav-link:hover::after { width: 100%; }
+
+        /* 자료실 섹션 초기 상태 숨김 */
+        #board { display: none; }
 
         @media print {
             .no-print { display: none; }
@@ -125,6 +108,7 @@
                     <a href="#competency" class="nav-link text-slate-700 hover:text-blue-600 font-bold text-sm tracking-tight transition duration-300">핵심경쟁력</a>
                     <a href="#business" class="nav-link text-slate-700 hover:text-blue-600 font-bold text-sm tracking-tight transition duration-300">사업분야</a>
                     <a href="#trackrecord" class="nav-link text-slate-700 hover:text-blue-600 font-bold text-sm tracking-tight transition duration-300">실적</a>
+                    <a onclick="toggleBoard()" class="nav-link text-slate-700 hover:text-blue-600 font-bold text-sm tracking-tight transition duration-300">게시판(자료실)</a>
                 </div>
 
                 <div class="flex items-center gap-6">
@@ -138,12 +122,13 @@
             </div>
         </div>
 
-        <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-50 shadow-inner">
+        <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-100 shadow-inner">
             <div class="px-4 pt-4 pb-6 space-y-2">
                 <a href="#about" class="block px-4 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition">회사소개</a>
                 <a href="#competency" class="block px-4 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition">핵심경쟁력</a>
                 <a href="#business" class="block px-4 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition">사업분야</a>
                 <a href="#trackrecord" class="block px-4 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition">실적</a>
+                <a onclick="toggleBoard()" class="block px-4 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition">게시판(자료실)</a>
                 <a href="#contact" class="block w-full text-center bg-blue-600 text-white px-4 py-4 mt-4 rounded-xl font-black shadow-md hover:bg-blue-700 transition tracking-wide">
                     문의하기
                 </a>
@@ -158,9 +143,7 @@
             <img src="배경3.jpg" class="hero-bg-img" alt="배경3">
             <div class="hero-overlay"></div>
         </div>
-
         <div class="absolute inset-0 opacity-10 z-[2]" style="background-image: radial-gradient(#4b5563 1px, transparent 1px); background-size: 30px 30px;"></div>
-        
         <div class="max-w-6xl mx-auto px-4 relative z-[10] w-full">
             <div class="flex flex-col md:flex-row items-center justify-between gap-12">
                 <div class="md:w-3/5 space-y-8 text-center md:text-left reveal active">
@@ -277,12 +260,9 @@
                 <h2 class="text-2xl font-bold mb-3">강화이앤씨의 <span class="text-blue-400">핵심 경쟁력</span></h2>
                 <p class="text-gray-400 text-sm">강화이앤씨가 제공하는 차별화된 핵심 경쟁력입니다.</p>
             </div>
-            
             <div class="grid md:grid-cols-3 gap-6">
                 <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-blue-500 transition duration-300 group hover:scale-[1.03] hover:shadow-xl reveal">
-                    <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fa-solid fa-handshake text-xl text-white"></i>
-                    </div>
+                    <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4"><i class="fa-solid fa-handshake text-xl text-white"></i></div>
                     <h3 class="text-lg font-bold mb-2 text-white">검증된 파트너십</h3>
                     <p class="text-gray-400 text-xs mb-3 border-b border-slate-700 pb-3">안전성이 입증된 공식 협력 관계</p>
                     <ul class="space-y-2 text-gray-300 text-xs">
@@ -292,9 +272,7 @@
                     </ul>
                 </div>
                 <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-blue-500 transition duration-300 group hover:scale-[1.03] hover:shadow-xl reveal" style="transition-delay: 100ms;">
-                    <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fa-solid fa-microchip text-xl text-white"></i>
-                    </div>
+                    <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4"><i class="fa-solid fa-microchip text-xl text-white"></i></div>
                     <h3 class="text-lg font-bold mb-2 text-white">기술 혁신 역량</h3>
                     <p class="text-gray-400 text-xs mb-3 border-b border-slate-700 pb-3">차별화된 기술력 확보</p>
                     <ul class="space-y-2 text-gray-300 text-xs">
@@ -304,9 +282,7 @@
                     </ul>
                 </div>
                 <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-blue-500 transition duration-300 group hover:scale-[1.03] hover:shadow-xl reveal" style="transition-delay: 200ms;">
-                    <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fa-solid fa-helmet-safety text-xl text-white"></i>
-                    </div>
+                    <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4"><i class="fa-solid fa-helmet-safety text-xl text-white"></i></div>
                     <h3 class="text-lg font-bold mb-2 text-white">전문 기술 인력</h3>
                     <p class="text-gray-400 text-xs mb-3 border-b border-slate-700 pb-3">현장을 책임지는 고숙련 인력</p>
                     <ul class="space-y-2 text-gray-300 text-xs">
@@ -319,13 +295,13 @@
         </div>
     </section>
 
-    <section id="business" class="py-16 bg-gray-50 break-before">
+    <section id="business" class="py-16 bg-gray-50 reveal">
         <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center mb-10 reveal">
+            <div class="text-center mb-10">
                 <h2 class="text-2xl font-bold mb-4 text-slate-900">주요 사업 분야</h2>
                 <p class="text-gray-500 text-sm">강화이앤씨는 <span class="text-blue-600 font-medium">충북, 강원, 경기 지역</span>을 중심으로<br class="md:hidden"> 최적의 솔루션을 제공합니다.</p>
             </div>
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 reveal">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
                 <div class="bg-white p-5 rounded-xl shadow-sm hover:shadow-xl transition border-t-4 border-blue-600 duration-300 hover:scale-[1.02]">
                     <div class="bg-blue-50 w-10 h-10 rounded-full flex items-center justify-center mb-3 text-blue-600"><i class="fa-solid fa-video text-lg"></i></div>
                     <h4 class="font-bold text-md mb-1 text-slate-900">보안 시스템</h4>
@@ -350,10 +326,10 @@
         </div>
     </section>
 
-    <section id="trackrecord" class="py-16 bg-white">
+    <section id="trackrecord" class="py-16 bg-white reveal">
         <div class="max-w-6xl mx-auto px-4">
             <div class="grid md:grid-cols-2 gap-12">
-                <div class="order-2 md:order-1 reveal">
+                <div class="order-2 md:order-1">
                     <h3 class="text-xl font-bold mb-6 flex items-center gap-2"><i class="fa-solid fa-arrow-trend-up text-blue-600"></i> 성장 그래프 (<span class="text-blue-600">전략적 실적 성과</span>)</h3>
                     <div class="bg-gray-50 p-6 rounded-xl border border-gray-100">
                         <h4 class="text-sm font-bold text-gray-500 mb-4">매출 규모 성장 추이 (2022년 대비)</h4>
@@ -361,19 +337,19 @@
                             <div class="relative"><div class="flex justify-between text-xs font-medium text-gray-500 mb-1"><span>2022</span><span>기준</span></div><div class="w-full bg-gray-200 rounded-full h-4"><div class="bg-gray-400 h-4 rounded-full flex items-center justify-end pr-2 text-[10px] text-white font-bold" style="width: 57%">1.0x</div></div></div>
                             <div class="relative"><div class="flex justify-between text-xs font-medium text-gray-500 mb-1"><span>2023</span></div><div class="w-full bg-gray-200 rounded-full h-4"><div class="bg-blue-400/80 h-4 rounded-full flex items-center justify-end pr-2 text-[10px] text-white font-bold transition duration-1000" style="width: 75%">1.3x</div></div></div>
                             <div class="relative"><div class="flex justify-between text-xs font-medium text-gray-500 mb-1"><span>2024</span></div><div class="w-full bg-gray-200 rounded-full h-4"><div class="bg-blue-500/90 h-4 rounded-full flex items-center justify-end pr-2 text-[10px] text-white font-bold transition duration-1000" style="width: 95%">1.7x</div></div></div>
-                            <div class="relative"><div class="flex justify-between text-xs font-bold text-blue-700 mb-1"><span>2025</span><span class="animate-pulse">역대 최대 실적 전망</span></div><div class="w-full bg-gray-200 rounded-full h-4 shadow-inner"><div class="bg-gradient-to-r from-blue-600 to-blue-800 h-4 rounded-full flex items-center justify-end pr-2 text-[10px] text-white font-bold shadow-lg transition duration-1000" style="width: 100%">1.8배 초과 성장</div></div></div>
+                            <div class="relative"><div class="flex justify-between text-xs font-bold text-blue-700 mb-1"><span>2025</span><span class="animate-pulse">역대 최대 실적 전망</span></div><div class="w-full bg-gray-200 rounded-full h-4 shadow-inner"><div class="bg-gradient-to-r from-blue-600 to-blue-800 h-4 rounded-full flex items-center justify-end pr-2 text-[10px] text-white font-bold shadow-lg" style="width: 100%">1.8배 초과 성장</div></div></div>
                         </div>
                         <p class="mt-4 text-xs text-center text-gray-500 font-medium">매년 20% 이상 <span class="text-blue-600 font-bold">압도적인 성장세</span> 기록 중</p>
                     </div>
                 </div>
-                <div class="order-1 md:order-2 reveal">
+                <div class="order-1 md:order-2">
                     <h3 class="text-xl font-bold mb-6">주요 연혁 및 실적</h3>
                     <div class="relative border-l-2 border-gray-200 ml-3 space-y-6">
                         <div class="ml-6 relative transition duration-300 hover:bg-gray-50 p-3 -m-3 rounded-md">
                             <span class="absolute -left-[31px] top-1 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-sm"></span>
                             <h4 class="font-bold text-slate-900 text-md">2025. 도약의 해</h4>
                             <p class="text-xs text-blue-600 font-bold mt-1">핵심 특허 등록 (돔형 카메라 세정장치)</p>
-                            <p class="text-xs text-gray-600">소프트웨어 사업자 등록, <span class="font-semibold text-slate-800 underline decoration-blue-500/30">안전보건 우수협력사 모범상</span> 수상</p>
+                            <p class="text-xs text-gray-600">소프트웨어 사업자 등록, <span class="font-semibold text-slate-800 underline decoration-blue-500/30">국내 1위 보안 기업 안전보건 우수협력사 모범상</span> 수상</p>
                         </div>
                         <div class="ml-6 relative transition duration-300 hover:bg-gray-50 p-3 -m-3 rounded-md">
                             <span class="absolute -left-[31px] top-1 w-4 h-4 bg-gray-300 rounded-full border-4 border-white"></span>
@@ -385,10 +361,76 @@
                             <span class="absolute -left-[31px] top-1 w-4 h-4 bg-gray-300 rounded-full border-4 border-white"></span>
                             <h4 class="font-bold text-slate-900 text-md">2019 ~ 2020. 설립 및 기반 구축</h4>
                             <p class="text-xs text-gray-600 mt-1"><span class="font-bold">법인 설립</span>, 여성기업 인증, 정보통신공사업 면허 취득</p>
-                            <p class="text-xs text-gray-600">국내 1위 보안 기업 정규 협력업체 등록</p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="board" class="py-20 bg-blue-50 relative border-y border-blue-100">
+        <button onclick="hideBoard()" class="absolute top-6 right-6 w-10 h-10 bg-white border border-gray-200 text-gray-400 hover:text-red-500 hover:border-red-200 rounded-full shadow-sm flex items-center justify-center transition duration-300 z-10">
+            <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h4 class="text-blue-600 font-bold text-sm tracking-widest mb-2 uppercase">Archives</h4>
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">안전관리 및 시공 자료실</h2>
+                <p class="text-gray-500 text-sm max-w-2xl mx-auto">본 자료실은 주식회사 강화이앤씨의 자산입니다. 인증된 사용자만 열람 가능합니다.</p>
+            </div>
+            <div class="grid gap-4 max-w-4xl mx-auto">
+                <a href="javascript:void(0)" onclick="openSecureFile('공사현장 위험예지활동 체크리스트.html')" class="flex items-center justify-between bg-white p-5 rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-md transition group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-orange-50 text-orange-600 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-orange-600 group-hover:text-white transition"><i class="fa-solid fa-file-code text-xl"></i></div>
+                        <div><h4 class="font-bold text-slate-900 group-hover:text-blue-600 transition">공사현장 위험예지활동 체크리스트</h4><p class="text-xs text-gray-500">HTML 자료</p></div>
+                    </div>
+                    <i class="fa-solid fa-lock text-gray-300 group-hover:text-blue-500"></i>
+                </a>
+                <a href="javascript:void(0)" onclick="openSecureFile('주식회사 강화이앤씨 화재대피훈련 시나리오.pdf')" class="flex items-center justify-between bg-white p-5 rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-md transition group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-red-50 text-red-600 rounded-lg flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition"><i class="fa-solid fa-file-pdf text-xl"></i></div>
+                        <div><h4 class="font-bold text-slate-900 group-hover:text-blue-600 transition">화재대피훈련 시나리오</h4><p class="text-xs text-gray-500">PDF 문서</p></div>
+                    </div>
+                    <i class="fa-solid fa-lock text-gray-300 group-hover:text-blue-500"></i>
+                </a>
+                <a href="javascript:void(0)" onclick="openSecureFile('전동공구 안전장비 체크리스트.pdf')" class="flex items-center justify-between bg-white p-5 rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-md transition group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-yellow-50 text-yellow-600 rounded-lg flex items-center justify-center group-hover:bg-yellow-600 group-hover:text-white transition"><i class="fa-solid fa-screwdriver-wrench text-xl"></i></div>
+                        <div><h4 class="font-bold text-slate-900 group-hover:text-blue-600 transition">전동공구 안전장비 체크리스트</h4><p class="text-xs text-gray-500">PDF 문서</p></div>
+                    </div>
+                    <i class="fa-solid fa-lock text-gray-300 group-hover:text-blue-500"></i>
+                </a>
+                <a href="javascript:void(0)" onclick="openSecureFile('일일 TBM 및 작업안전 점검표.pdf')" class="flex items-center justify-between bg-white p-5 rounded-xl border border-gray-100 hover:border-blue-500 hover:shadow-md transition group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition"><i class="fa-solid fa-clipboard-check text-xl"></i></div>
+                        <div><h4 class="font-bold text-slate-900 group-hover:text-blue-600 transition">일일 TBM 및 작업안전 점검표</h4><p class="text-xs text-gray-500">PDF 문서</p></div>
+                    </div>
+                    <i class="fa-solid fa-lock text-gray-300 group-hover:text-blue-500"></i>
+                </a>
+                <a href="javascript:void(0)" onclick="openSecureFile('주식회사 강화이앤씨 안전품질고객서비스 관리 매뉴얼.pdf')" class="flex items-center justify-between bg-white p-5 rounded-xl border border-gray-100 hover:border-blue-500 hover:shadow-md transition group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition"><i class="fa-solid fa-file-pdf text-xl"></i></div>
+                        <div><h4 class="font-bold text-slate-900 group-hover:text-blue-600 transition">안전품질고객서비스 관리 매뉴얼</h4><p class="text-xs text-gray-500">PDF 문서</p></div>
+                    </div>
+                    <i class="fa-solid fa-lock text-gray-300 group-hover:text-blue-500"></i>
+                </a>
+                <a href="javascript:void(0)" onclick="openSecureFile('근골격계질환 유해요인조사표.pdf')" class="flex items-center justify-between bg-white p-5 rounded-xl border border-gray-100 hover:border-blue-500 hover:shadow-md transition group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-purple-50 text-purple-600 rounded-lg flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition"><i class="fa-solid fa-person-dots-from-line text-xl"></i></div>
+                        <div><h4 class="font-bold text-slate-900 group-hover:text-blue-600 transition">근골격계질환 유해요인조사표</h4><p class="text-xs text-gray-500">PDF 문서</p></div>
+                    </div>
+                    <i class="fa-solid fa-lock text-gray-300 group-hover:text-blue-500"></i>
+                </a>
+                <a href="javascript:void(0)" onclick="openSecureFile('고소작업대 작업계획서 .pdf')" class="flex items-center justify-between bg-white p-5 rounded-xl border border-gray-100 hover:border-blue-500 hover:shadow-md transition group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-lg flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition"><i class="fa-solid fa-file-pdf text-xl"></i></div>
+                        <div><h4 class="font-bold text-slate-900 group-hover:text-blue-600 transition">고소작업대 작업계획서</h4><p class="text-xs text-gray-500">PDF 문서</p></div>
+                    </div>
+                    <i class="fa-solid fa-lock text-gray-300 group-hover:text-blue-500"></i>
+                </a>
+            </div>
+            <div class="mt-12 text-center">
+                <button onclick="hideBoard()" class="px-8 py-3 bg-slate-800 text-white font-bold rounded-lg hover:bg-slate-700 transition shadow-lg">자료실 닫기</button>
             </div>
         </div>
     </section>
@@ -417,7 +459,7 @@
         </div>
     </section>
 
-    <footer id="contact" class="bg-slate-900 text-white py-16 break-before reveal">
+    <footer id="contact" class="bg-slate-900 text-white py-16 reveal">
         <div class="max-w-6xl mx-auto px-4">
             <div class="grid md:grid-cols-2 gap-10">
                 <div class="order-2 md:order-1">
@@ -425,14 +467,14 @@
                     <p class="text-gray-400 text-sm mb-6">귀사의 <span class="text-blue-400">안전한 내일</span>을 강화이앤씨가 설계합니다.</p>
                     <div class="space-y-5">
                         <div class="flex items-start gap-4"><div class="w-8 h-8 mt-1 bg-slate-800 rounded-full flex items-center justify-center text-blue-500 flex-shrink-0"><i class="fa-solid fa-location-dot text-sm"></i></div><div><p class="text-xs text-gray-400 mb-1">Address</p><p class="font-medium text-sm">강원특별자치도 원주시 섭재삼보길 1-56, 101호 (반곡동)</p></div></div>
-                        <div class="flex items-start gap-4"><div class="w-8 h-8 mt-1 bg-slate-800 rounded-full flex items-center justify-center text-blue-500 flex-shrink-0"><i class="fa-solid fa-phone text-sm"></i></div><div><p class="text-xs text-gray-400 mb-1">Tel & Direct</p><a href="tel:0337648844" class="font-bold text-lg text-white hover:text-blue-400 transition">033-764-8844</a><br><a href="tel:01085776093" class="font-bold text-lg text-blue-400 hover:text-blue-300 transition">010-8577-6093</a></div></div>
-                        <div class="flex items-start gap-4"><div class="w-8 h-8 mt-1 bg-slate-800 rounded-full flex items-center justify-center text-blue-500 flex-shrink-0"><i class="fa-solid fa-envelope text-sm"></i></div><div><p class="text-xs text-gray-400 mb-1">E-mail</p><a href="mailto:kh01484@hanmail.net" class="font-medium text-sm text-white hover:text-blue-400 transition underline decoration-blue-500/50">kh01484@hanmail.net</a></div></div>
-                        <div class="pt-6"><a href="https://naver.me/xfYou8Ix" target="_blank" class="btn-pulse bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-8 rounded-full transition duration-300 shadow-xl flex items-center justify-center gap-2 transform hover:-translate-y-1 w-full sm:w-auto"><i class="fa-solid fa-map-location-dot fa-lg"></i> <span class="text-lg">오시는 길 (네이버 지도)</span></a></div>
+                        <div class="flex items-start gap-4"><div class="w-8 h-8 mt-1 bg-slate-800 rounded-full flex items-center justify-center text-blue-500 flex-shrink-0"><i class="fa-solid fa-phone text-sm"></i></div><div><p class="text-xs text-gray-400 mb-1">Tel & Direct</p><a href="tel:0337648844" class="font-bold text-lg text-white">033-764-8844</a><br><a href="tel:01085776093" class="font-bold text-lg text-blue-400">010-8577-6093</a></div></div>
+                        <div class="flex items-start gap-4"><div class="w-8 h-8 mt-1 bg-slate-800 rounded-full flex items-center justify-center text-blue-500 flex-shrink-0"><i class="fa-solid fa-envelope text-sm"></i></div><div><p class="text-xs text-gray-400 mb-1">E-mail</p><a href="mailto:kh01484@hanmail.net" class="font-medium text-sm text-white underline decoration-blue-500/50">kh01484@hanmail.net</a></div></div>
+                        <div class="pt-6"><a href="https://naver.me/xfYou8Ix" target="_blank" class="btn-pulse bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-8 rounded-full transition shadow-xl flex items-center justify-center gap-2 transform hover:-translate-y-1 w-full sm:w-auto"><i class="fa-solid fa-map-location-dot fa-lg"></i> <span class="text-lg">오시는 길 (네이버 지도)</span></a></div>
                     </div>
                 </div>
                 <div class="order-1 md:order-2">
                     <div class="bg-white rounded-xl p-6 text-slate-800 shadow-xl border-t-4 border-blue-600">
-                        <div class="flex items-center justify-between mb-4"><h3 class="text-lg font-bold"> 기술 상담 신청</h3><span class="bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded"></span></div>
+                        <h3 class="text-lg font-bold mb-4">기술 상담 신청</h3>
                         <form class="space-y-4" onsubmit="event.preventDefault(); sendInquirySMS();">
                             <div class="grid grid-cols-2 gap-4">
                                 <div><label class="block text-xs font-bold text-gray-600 mb-1">담당자명</label><input type="text" id="reg_name" required class="w-full bg-gray-50 border border-gray-200 rounded p-2 text-sm focus:outline-none focus:border-blue-500 transition" placeholder="홍길동"></div>
@@ -452,62 +494,46 @@
     </footer>
 
     <script>
+        // 자료실 보안 로직
+        const _k = "ODg0NA=="; // 8844 마스킹
+        function openSecureFile(fileUrl) {
+            const userInput = prompt("본 자료를 열람하시려면 비밀번호를 입력해 주세요.");
+            if (userInput === null) return;
+            if (btoa(userInput) === _k) { window.open(fileUrl, '_blank'); } 
+            else { alert("비밀번호가 일치하지 않습니다."); }
+        }
+
+        function toggleBoard() {
+            const board = document.getElementById('board');
+            if (board.style.display === 'block') { hideBoard(); } else { showBoard(); }
+        }
+        function showBoard() {
+            const board = document.getElementById('board');
+            board.style.display = 'block';
+            document.body.classList.remove('is-active');
+            setTimeout(() => { board.scrollIntoView({ behavior: 'smooth' }); board.classList.add('active'); }, 50);
+        }
+        function hideBoard() {
+            const board = document.getElementById('board');
+            window.scrollTo({ top: board.offsetTop - 100, behavior: 'smooth' });
+            setTimeout(() => { board.style.display = 'none'; board.classList.remove('active'); }, 300);
+        }
+
         document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
             document.body.classList.toggle('is-active');
             const icon = this.querySelector('i');
-            if (document.body.classList.contains('is-active')) {
-                icon.classList.remove('fa-bars-staggered');
-                icon.classList.add('fa-xmark'); 
-            } else {
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars-staggered');
-            }
-        });
-
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.body.classList.remove('is-active');
-                document.getElementById('mobile-menu-toggle').querySelector('i').classList.replace('fa-xmark', 'fa-bars-staggered');
-            });
+            if (document.body.classList.contains('is-active')) { icon.classList.replace('fa-bars-staggered', 'fa-xmark'); } 
+            else { icon.classList.replace('fa-xmark', 'fa-bars-staggered'); }
         });
 
         var mybutton = document.getElementById("topBtn");
-        window.onscroll = function() {scrollFunction()};
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                mybutton.style.display = "block";
-            } else {
-                mybutton.style.display = "none";
-            }
-        }
-
-        function topFunction() {
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
-
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
+        window.onscroll = function() { if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) { mybutton.style.display = "block"; } else { mybutton.style.display = "none"; } };
+        function topFunction() { window.scrollTo({top: 0, behavior: 'smooth'}); }
+        function reveal() { var reveals = document.querySelectorAll(".reveal"); for (var i = 0; i < reveals.length; i++) { if (reveals[i].getBoundingClientRect().top < window.innerHeight - 150) { reveals[i].classList.add("active"); } } }
         window.addEventListener("scroll", reveal);
         reveal();
-
-        let currentImgIndex = 0;
-        const bgImages = document.querySelectorAll('.hero-bg-img');
-        function rotateHeroImages() {
-            bgImages[currentImgIndex].classList.remove('active');
-            currentImgIndex = (currentImgIndex + 1) % bgImages.length;
-            bgImages[currentImgIndex].classList.add('active');
-        }
-        setInterval(rotateHeroImages, 3000);
+        let currentImgIndex = 0; const bgImages = document.querySelectorAll('.hero-bg-img');
+        setInterval(() => { bgImages[currentImgIndex].classList.remove('active'); currentImgIndex = (currentImgIndex + 1) % bgImages.length; bgImages[currentImgIndex].classList.add('active'); }, 3000);
 
         function sendInquirySMS() {
             const name = document.getElementById('reg_name').value;
@@ -515,13 +541,9 @@
             const message = document.getElementById('reg_message').value;
             const adminPhone = "01085776093"; 
             const smsBody = `[강화이앤씨 홈페이지 문의]\n성함: ${name}\n연락처: ${phone}\n문의: ${message}`;
-            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-            if (isMobile) {
-                const separator = navigator.userAgent.match(/iPhone|iPad|iPod/i) ? '&' : '?';
-                location.href = `sms:${adminPhone}${separator}body=${encodeURIComponent(smsBody)}`;
-            } else {
-                alert("PC에서는 문자 앱을 열 수 없습니다.\n모바일에서 이용하시거나 아래 번호로 직접 연락 부탁드립니다.\n\n상담번호: " + adminPhone);
-            }
+            if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+                location.href = `sms:${adminPhone}${navigator.userAgent.match(/iPhone|iPad|iPod/i) ? '&' : '?'}body=${encodeURIComponent(smsBody)}`;
+            } else { alert("PC에서는 아래 번호로 직접 연락 부탁드립니다.\n상담번호: " + adminPhone); }
         }
     </script>
 </body>
